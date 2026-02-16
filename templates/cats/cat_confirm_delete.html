@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Erase My Profile?</h1>
+
+    <p>
+        Are you sure you want to remove {{ object.name }} from the diary?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, erase me</button>
+        <a href="{% url 'cats:detail' object.pk %}">Cancel</a>
+    </form>
+
+{% endblock %}

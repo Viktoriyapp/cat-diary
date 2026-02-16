@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Register Yourself</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div>
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <p>
+        <a href="{% url 'cats:list' %}">← Back to all cats</a>
+    </p>
+
+{% endblock %}

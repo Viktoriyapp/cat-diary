@@ -18,3 +18,6 @@ class CatForm(forms.ModelForm):
             'personality': 'How would you describe yourself?',
             'photo': 'A majestic photo of me. Optional, but recommended.',
         }
+        widgets = {
+            'birth_date': forms.DateInput(attrs={'type': 'date'}),
+        }

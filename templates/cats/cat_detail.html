@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ cat.name }}</h1>
+
+    <p><strong>Personality:</strong> {{ cat.personality }}</p>
+
+    {% if cat.birth_date %}
+        <p><strong>Born on:</strong> {{ cat.birth_date }}</p>
+    {% endif %}
+
+    {% if cat.photo %}
+        <img src="{{ cat.photo.url }}" alt="{{ cat.name }}" width="300">
+    {% endif %}
+
+    <p>
+        <a href="{% url 'cats:update' cat.pk %}">Edit</a>
+    </p>
+
+    <p>
+        <a href="{% url 'cats:delete' cat.pk %}">Delete</a>
+    </p>
+
+
+    <p>
+        <a href="{% url 'cats:list' %}">← Back to all cats</a>
+    </p>
+
+{% endblock %}
