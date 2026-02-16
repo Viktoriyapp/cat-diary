@@ -5,15 +5,13 @@ from .models import Cat
 class CatForm(forms.ModelForm):
     class Meta:
         model = Cat
-        fields = ['name', 'birth_date', 'personality', 'photo']
-
+        exclude = ['created_at']
         labels = {
             'name': 'My name',
             'birth_date': 'My birthday',
             'personality': 'My personality',
             'photo': 'My photo',
         }
-
         help_texts = {
             'name': 'What do humans usually call me?',
             'birth_date': 'If you remember it... naps can affect memory...',

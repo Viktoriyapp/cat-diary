@@ -14,7 +14,7 @@ class Activity(models.Model):
         OBSERVATION = 'observation', 'Observation'
         TERRITORY = 'territory', 'Territory'
 
-    class EnergyCostChoices(models.IntegerChoices):
+        class EnergyCostChoices(models.IntegerChoices): # Not making this class reusable because its CONCEPTUALLY different from the other one in moods/models
         LOW = 1, 'Low'
         MEDIUM = 2, 'Medium'
         HIGH = 3, 'High'

@@ -16,7 +16,7 @@ class MoodEntry(models.Model): # The mood for the day
         CUDDLY = 'cuddly', 'Cuddly'
         ALERT = 'alert', 'Alert'
 
-    class EnergyLevelChoices(models.IntegerChoices):
+    class EnergyLevelChoices(models.IntegerChoices): # Not making this class reusable because its CONCEPTUALLY different from the other one in activities/models
         LOW = 1, 'Low'
         MEDIUM = 2, 'Medium'
         HIGH = 3, 'High'
