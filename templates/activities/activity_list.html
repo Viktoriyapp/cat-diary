@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Activities For Use</h1>
+
+    <p>
+        <a href="{% url 'activities:create' %}">Add New Activity</a>
+    </p>
+
+    {% if activities %}
+        <ul>
+            {% for activity in activities %}
+                <li>
+                    <a href="{% url 'activities:detail' activity.pk %}">
+                        {{ activity.name }}
+                    </a>
+                    ({{ activity.category }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No activities have been defined yet.</p>
+    {% endif %}
+
+    {% if is_paginated %}
+        <div>
+
+            {% if page_obj.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+
+        </div>
+    {% endif %}
+
+{% endblock %}

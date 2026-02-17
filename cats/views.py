@@ -12,7 +12,7 @@ class CatListView(ListView):
     model = Cat
     template_name = 'cats/cat_list.html'
     context_object_name = 'cats'
-    paginate_by = 1
+    paginate_by = 5
 
 
 class CatDetailView(DetailView):
@@ -38,4 +38,4 @@ class CatUpdateView(UpdateView):
 class CatDeleteView(DeleteView):
     model = Cat
     template_name = 'cats/cat_confirm_delete.html'
-    success_url = reverse_lazy('cats:list')
+    success_url = reverse_lazy('cats:list') #redirect after post

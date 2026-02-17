@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ activity.name }}</h1>
+
+    <p><strong>Category:</strong> {{ activity.category }}</p>
+    <p><strong>Energy cost:</strong> {{ activity.get_energy_cost_display }}</p>
+
+    {% if activity.description %}
+        <p><strong>Description:</strong></p>
+        <p>{{ activity.description }}</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'activities:update' activity.pk %}">Edit</a> |
+        <a href="{% url 'activities:delete' activity.pk %}">Delete</a>
+    </p>
+
+    <p>
+        <a href="{% url 'activities:list' %}">← Back to activities</a>
+    </p>
+
+{% endblock %}

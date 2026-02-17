@@ -6,7 +6,7 @@
 
     <p><strong>Cat:</strong> {{ mood.cat.name }}</p>
     <p><strong>Mood:</strong> {{ mood.mood }}</p>
-    <p><strong>Energy level:</strong> {{ mood.energy_level }}</p>
+    <p><strong>Energy level:</strong> {{ mood.get_energy_level_display }}</p>
 
     {% if mood.activities.all %}
         <p><strong>Activities:</strong></p>

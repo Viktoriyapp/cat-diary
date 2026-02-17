@@ -16,8 +16,11 @@ class ActivityForm(forms.ModelForm):
         }
 
         help_texts = {
-            'name': 'Chased invisible entities.',
             'description': 'Describe adventure in more detail.',
+        }
+
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Chased invisible entities.'}),
         }
 
     def clean_name(self):
