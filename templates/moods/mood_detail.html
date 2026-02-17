@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>My Mood on {{ mood.date }}</h1>
+
+    <p><strong>Cat:</strong> {{ mood.cat.name }}</p>
+    <p><strong>Mood:</strong> {{ mood.mood }}</p>
+    <p><strong>Energy level:</strong> {{ mood.energy_level }}</p>
+
+    {% if mood.activities.all %}
+        <p><strong>Activities:</strong></p>
+        <ul>
+            {% for activity in mood.activities.all %}
+                <li>{{ activity.name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if mood.personal_note %}
+        <p><strong>Diary note:</strong></p>
+        <p>{{ mood.personal_note }}</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'moods:update' mood.pk %}">Edit</a> |
+        <a href="{% url 'moods:delete' mood.pk %}">Delete</a>
+    </p>
+
+    <p>
+        <a href="{% url 'moods:list' %}">← Back to all moods</a>
+    </p>
+
+{% endblock %}

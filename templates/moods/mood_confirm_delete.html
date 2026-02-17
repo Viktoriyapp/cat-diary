@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Erase This Memory?</h1>
+
+    <p>
+        Are you sure you want to delete the diary entry from {{ object.date }}?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, erase it</button>
+        <a href="{% url 'moods:detail' object.pk %}">Cancel</a>
+    </form>
+
+{% endblock %}

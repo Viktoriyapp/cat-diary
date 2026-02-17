@@ -22,4 +22,5 @@ from cats.views import CatListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cats/', include('cats.urls')),
+    path('moods/', include('moods.urls')),
 ]
