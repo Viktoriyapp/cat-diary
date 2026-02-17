@@ -1,6 +1,6 @@
 from django.db import models
-
 from moods.validators import date_validator
+from common.choices import EnergyChoices
 
 
 # Create your models here.
@@ -16,14 +16,9 @@ class MoodEntry(models.Model): # The mood for the day
         CUDDLY = 'cuddly', 'Cuddly'
         ALERT = 'alert', 'Alert'
 
-    class EnergyLevelChoices(models.IntegerChoices): # Not making this class reusable because its CONCEPTUALLY different from the other one in activities/models
-        LOW = 1, 'Low'
-        MEDIUM = 2, 'Medium'
-        HIGH = 3, 'High'
-
     date = models.DateField(validators=[date_validator])
     mood = models.CharField(max_length=30, choices=MoodChoices.choices)
-    energy_level = models.IntegerField(choices=EnergyLevelChoices.choices)
+    energy_level = models.IntegerField(choices=EnergyChoices.choices)
     personal_note = models.TextField(null=True, blank=True)
     cat = models.ForeignKey('cats.Cat',
             on_delete=models.CASCADE,

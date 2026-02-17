@@ -1,5 +1,5 @@
 from django.db import models
-
+from common.choices import EnergyChoices
 # Create your models here.
 
 class Activity(models.Model):
@@ -14,14 +14,9 @@ class Activity(models.Model):
         OBSERVATION = 'observation', 'Observation'
         TERRITORY = 'territory', 'Territory'
 
-    class EnergyCostChoices(models.IntegerChoices): # Not making this class reusable because its CONCEPTUALLY different from the other one in moods/models
-        LOW = 1, 'Low'
-        MEDIUM = 2, 'Medium'
-        HIGH = 3, 'High'
-
     name = models.CharField(max_length=50)
     category = models.CharField(choices=CategoryChoices.choices, max_length=30)
-    energy_cost = models.IntegerField(choices=EnergyCostChoices.choices)
+    energy_cost = models.IntegerField(choices=EnergyChoices.choices)
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
