@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from activities.models import Activity
 from common.choices import EnergyChoices
 from moods.models import MoodEntry
 
@@ -34,8 +35,10 @@ class MoodEntryForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        if self.instance.pk:
+        if self.instance.pk: #disable cat instance on update
             self.fields['cat'].disabled = True
+
+        self.fields['activities'].queryset = Activity.objects.order_by('name')
 
     def clean_personal_note(self):
         note = self.cleaned_data.get('personal_note')

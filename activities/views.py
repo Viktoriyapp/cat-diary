@@ -15,6 +15,21 @@ class ActivityListView(ListView):
     paginate_by = 7
     ordering = ['category', 'name']
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category = self.request.GET.get('category')
+
+        if category:
+            queryset = queryset.filter(category=category)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_choices'] = Activity.CategoryChoices.choices
+        context['selected_category'] = self.request.GET.get('category')
+        return context
+
 
 class ActivityDetailView(DetailView):
     model = Activity
