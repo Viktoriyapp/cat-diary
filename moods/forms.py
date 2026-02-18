@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 from common.choices import EnergyChoices
 from moods.models import MoodEntry
 
@@ -50,4 +52,5 @@ class MoodEntryForm(forms.ModelForm):
 
         if mood == MoodEntry.MoodChoices.SLEEPY and energy == EnergyChoices.HIGH:
             raise forms.ValidationError('If you`re sleepy, you cannot have high energy.')
+
         return cleaned_data

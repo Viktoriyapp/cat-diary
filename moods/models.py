@@ -27,5 +27,11 @@ class MoodEntry(models.Model): # The mood for the day
             related_name='mood_entries',
             blank=True) # 1 moodEntry can have many activities, and 1 activity can be for many moodEntries
 
+    class Meta:
+        constraints = [models.UniqueConstraint(
+            fields=['cat', 'date'],
+            name = 'unique_cat_date_entry',
+        )]
+
     def __str__(self):
         return f'{self.cat.name} - {self.date}'
