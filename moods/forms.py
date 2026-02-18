@@ -1,5 +1,5 @@
 from django import forms
-
+from common.choices import EnergyChoices
 from moods.models import MoodEntry
 
 
@@ -48,6 +48,6 @@ class MoodEntryForm(forms.ModelForm):
         mood = cleaned_data.get('mood')
         energy = cleaned_data.get('energy_level')
 
-        if mood == MoodEntry.MoodChoices.SLEEPY and energy == MoodEntry.EnergyLevelChoices.HIGH:
+        if mood == MoodEntry.MoodChoices.SLEEPY and energy == EnergyChoices.HIGH:
             raise forms.ValidationError('If you`re sleepy, you cannot have high energy.')
         return cleaned_data

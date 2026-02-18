@@ -4,10 +4,6 @@
 
     <h1>Activities For Use</h1>
 
-    <p>
-        <a href="{% url 'activities:create' %}">Add New Activity</a>
-    </p>
-
     {% if activities %}
         <ul>
             {% for activity in activities %}
@@ -22,6 +18,10 @@
     {% else %}
         <p>No activities have been defined yet.</p>
     {% endif %}
+
+    <p>
+        <a href="{% url 'activities:create' %}">Add New Activity</a>
+    </p>
 
     {% include 'common/pagination.html' %}
 

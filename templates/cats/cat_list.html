@@ -16,6 +16,8 @@
         <p>No cats have registered yet.</p>
     {% endif %}
 
+    <a href="{% url 'cats:create' %}">Add new member</a> <br> <br>
+
     {% include 'common/pagination.html' %}
 
 {% endblock %}

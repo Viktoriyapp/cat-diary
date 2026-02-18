@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Welcome to your Cat Mood Diary</h1>
+
+    <p>
+        Track daily moods, energy levels and mysterious feline activities.
+    </p>
+
+    <p>
+        Every day, you can:
+    </p>
+
+    <ul>
+        <li>Record your mood</li>
+        <li>Log your daily activities</li>
+        <li>Write a personal diary note</li>
+        <li>Track your energy levels</li>
+    </ul>
+
+    <hr>
+
+    <h2>Diary Achievements</h2>
+
+    {% if not total_cats %}
+        <p>No cats yet. Be the first to join the diary!</p>
+    {% else %}
+        <p>We have <strong>{{ total_cats }} total cats!</strong></p>
+        <p>With <strong>{{ total_entries }} mood entries in total...</strong></p>
+    {% endif %}
+
+    {% if most_active_cat %}
+        <p>
+            Star of Diary:
+            <strong>{{ most_active_cat.name }}</strong> with {{ most_active_cat.entries_count }} diary entries!
+        </p>
+    {% endif %}
+
+    <hr>
+
+    <p>Ready to begin?</p>
+
+    <a href="{% url 'moods:list' %}">Go to Mood Diary</a> |
+    <a href="{% url 'cats:list' %}">Meet the Cats</a>
+
+    <p>Not registered yet?</p>
+    <a href="{% url 'cats:create' %}">Add yourself</a>
+
+{% endblock %}

@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 from cats.views import CatListView
+from common.views import HomePageView
 
 urlpatterns = [
+    path('', HomePageView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('cats/', include('cats.urls')),
     path('moods/', include('moods.urls')),
     path('activities/', include('activities.urls')),
 ]
+
+handler404 = 'common.views.custom_404'

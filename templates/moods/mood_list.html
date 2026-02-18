@@ -2,11 +2,50 @@
 
 {% block content %}
 
-    <h1>My Daily Moods</h1>
+    <h1>Our Daily Moods</h1>
 
     <p>
-        <a href="{% url 'moods:create' %}">Add New Mood Entry</a>
+        <a href="{% url 'moods:create' %}">Add new day to my diary</a>
     </p>
+
+    <form method="get">
+        <!--  by Cat filtering -->
+        <label for="cat">Filter by cat:</label>
+        <select name="cat" id="cat">
+            <option value="">All Cats</option>
+
+            {% for cat in cats %}
+                <option value="{{ cat.id }}"
+                        {% if selected_cat == cat.id|stringformat:"s" %}
+                        selected
+                        {% endif %}
+                >
+                    {{ cat.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <!-- by Mood filtering -->
+        <label for="mood">Filter by mood:</label>
+        <select name="mood" id="mood">
+            <option value="">All Moods</option>
+            {% for value, label in mood_choices %}
+                <option value="{{ value }}"
+                        {% if selected_mood == value %}
+                        selected
+                        {% endif %}
+                >
+                    {{ label }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Filter</button>
+
+        {% if has_filters %}
+            <a href="{% url 'moods:list' %}">Clear Filters</a>
+        {% endif %}
+    </form>
 
     {% if moods %}
         <ul>

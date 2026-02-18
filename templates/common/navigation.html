@@ -1,4 +1,12 @@
 <nav>
-    <a href="{% url 'cats:list' %}">All Cats</a> |
-    <a href="{% url 'cats:create' %}">Add Cat</a>
+    <a href="{% url 'home' %}">Home</a> |
+
+    <a href="{% url 'moods:list' %}">Mood Diary</a> |
+    <a href="{% url 'moods:create' %}">Add Another Day</a> |
+
+    <a href="{% url 'cats:list' %}">Us Cats</a> |
+    <!--<a href="{% url 'cats:create' %}">Add Cat</a> | -->
+
+    <a href="{% url 'activities:list' %}">Activities</a> |
+    <!--<a href="{% url 'activities:create' %}">Add Activity</a> | -->
 </nav>
