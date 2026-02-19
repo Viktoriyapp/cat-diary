@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}Add Cat{% endblock %}
+
 {% block content %}
 
-    <h1>Register Yourself</h1>
+    <h1>Add Yourself</h1>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
