@@ -2,33 +2,38 @@
 
 {% block content %}
 
-    <h1>My Mood on {{ mood.date }}</h1>
+    <h1 class="mb-4">My Mood on {{ mood.date }}</h1>
 
-    <p><strong>Cat:</strong> {{ mood.cat.name }}</p>
-    <p><strong>Mood:</strong> {{ mood.mood }}</p>
-    <p><strong>Energy level:</strong> {{ mood.get_energy_level_display }}</p>
+    <p class="mb-2"><strong>Cat:</strong> {{ mood.cat.name }}</p>
+
+    <p class="mb-2"><strong>Mood:</strong> {{ mood.mood }}</p>
+
+    <p class="mb-2"><strong>Energy level:</strong> {{ mood.get_energy_level_display }}</p>
 
     {% if mood.activities.all %}
-        <p><strong>Activities:</strong></p>
-        <ul>
+        <p class="mt-3 mb-1"><strong>Activities:</strong></p>
+
+        <ul class="list-group mb-3">
             {% for activity in mood.activities.all %}
-                <li>{{ activity.name }}</li>
+                <li class="list-group-item">{{ activity.name }}</li>
             {% endfor %}
         </ul>
     {% endif %}
 
     {% if mood.personal_note %}
-        <p><strong>Diary note:</strong></p>
-        <p>{{ mood.personal_note }}</p>
+        <p class="mt-3 mb-1"><strong>Diary note:</strong></p>
+
+        <p class="mb-3">{{ mood.personal_note }}</p>
     {% endif %}
 
     <p>
-        <a href="{% url 'moods:update' mood.pk %}">Edit</a> |
-        <a href="{% url 'moods:delete' mood.pk %}">Delete</a>
+        <a href="{% url 'moods:update' mood.pk %}" class="btn btn-soft me-2">Edit</a>
+
+        <a href="{% url 'moods:delete' mood.pk %}" class="btn btn-outline-secondary">Delete</a>
     </p>
 
-    <p>
-        <a href="{% url 'moods:list' %}">← Back to all daily moods</a>
+    <p class="mt-3">
+        <a href="{% url 'moods:list' %}" class="text-decoration-none">← Back to all daily moods</a>
     </p>
 
 {% endblock %}

@@ -2,13 +2,36 @@
 
 {% block content %}
 
-<h1>404 – The Cat Knocked This Page Off the Shelf 🐾</h1>
+    <div class="mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg"
+     width="110"
+     height="110"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="#3a3a47"
+     stroke-width="1.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+  <path d="M4 12c0-3 2.5-5 8-5s8 2 8 5"/>
+  <path d="M6 7l-2-3M18 7l2-3"/>
+  <circle cx="9" cy="11" r="1"/>
+  <circle cx="15" cy="11" r="1"/>
+  <path d="M12 14c1 0 1.5-.5 2-.5s1 .5 2 .5"/>
+</svg>
 
-<p>
-    The page you are looking for does not exist.
-    Maybe it got lost in the litter box.
-</p>
+    </div>
 
-<a href="{% url 'home' %}">Go Home</a>
+    <h1 class="mb-3 fw-bold">
+        404 – The Cat Knocked This Page Off the Shelf
+    </h1>
+
+    <p class="mb-4">
+        The page you are looking for does not exist.<br>
+        Maybe it got lost in the litter box.
+    </p>
+
+    <a href="{% url 'home' %}" class="btn btn-soft">
+        Take Me Home
+    </a>
 
 {% endblock %}

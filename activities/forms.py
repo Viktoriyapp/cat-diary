@@ -20,7 +20,20 @@ class ActivityForm(forms.ModelForm):
         }
 
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Chased invisible entities.'}),
+            'name': forms.TextInput(attrs={
+                'placeholder': 'Chased invisible entities.',
+                'class': 'form-control',
+            }),
+            'category': forms.Select(attrs={
+                'class': 'form-select',
+            }),
+            'energy_cost': forms.Select(attrs={
+                'class': 'form-select',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows':3
+            }),
         }
 
     def clean_name(self):

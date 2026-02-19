@@ -25,11 +25,16 @@ class MoodEntryForm(forms.ModelForm):
         }
 
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}),
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'mood': forms.Select(attrs={'class': 'form-select'}),
+            'energy_level': forms.Select(attrs={'class': 'form-select'}),
+            'cat': forms.Select(attrs={'class': 'form-select'}),
+            'activities': forms.SelectMultiple(attrs={'class': 'form-select'}),
             'personal_note': forms.Textarea(attrs={
                 'placeholder': 'Today I conquered the couch and defeated the red dot!',
-                'rows': 3
-            })
+                'rows': 3,
+                'class': 'form-control',
+            }),
         }
 
     def __init__(self, *args, **kwargs):

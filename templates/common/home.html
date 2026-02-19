@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="text-center">
 
-    <h1>Welcome to your Cat Mood Diary</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-chat-heart" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.965 12.695a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2m-.8 3.108.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125M8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+</svg>
+    <br> <br>
+    <h1 class="mb-4">Welcome to your Cat Mood Diary!</h1>
 
-    <p>
-        Track daily moods, energy levels and mysterious feline activities.
-    </p>
+    <p class="mb-3"><i>Track daily moods, energy levels and mysterious feline activities.</i></p>
 
-    <p>
-        Every day, you can:
-    </p>
+    <p class="mb-2"><strong>Every day, you can:</strong></p>
 
-    <ul>
-        <li>Record your mood</li>
-        <li>Log your daily activities</li>
-        <li>Write a personal diary note</li>
-        <li>Track your energy levels</li>
-    </ul>
+    <div class="mb-4">
+        <p class="mb-1">Record your mood</p>
+        <p class="mb-1">Log your daily activities</p>
+        <p class="mb-1">Write a personal diary note</p>
+    </div>
 
-    <hr>
+    <hr class="my-4">
 
-    <h2>Diary Achievements</h2>
+    <h2 class="mb-3">Diary Achievements</h2>
 
     {% if not total_cats %}
         <p>No cats yet. Be the first to join the diary!</p>
@@ -31,20 +31,23 @@
     {% endif %}
 
     {% if most_active_cat %}
-        <p>
+        <p class="mt-2">
             Star of Diary:
-            <strong>{{ most_active_cat.name }}</strong> with {{ most_active_cat.entries_count }} diary entries!
-        </p>
+            <strong>{{ most_active_cat.name }}</strong>
+            with {{ most_active_cat.entries_count }} diary entries!</p>
     {% endif %}
 
-    <hr>
+    <hr class="my-4">
 
-    <p>Ready to begin?</p>
+    <p class="mb-3">Ready to begin?</p>
 
-    <a href="{% url 'moods:list' %}">Go to Mood Diary</a> |
-    <a href="{% url 'cats:list' %}">Meet the Cats</a>
+    <a href="{% url 'moods:list' %}" class="btn btn-soft me-2">Go to Mood Diary</a>
 
-    <p>Not registered yet?</p>
-    <a href="{% url 'cats:create' %}">Add yourself</a>
+    <a href="{% url 'cats:list' %}" class="btn btn-outline-secondary">Meet the Cats</a>
 
+    <p class="mt-4">
+        Not registered yet?
+        <a href="{% url 'cats:create' %}" class="text-decoration-none fw-semibold">Add yourself</a>
+    </p>
+</div>
 {% endblock %}

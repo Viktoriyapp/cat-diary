@@ -19,5 +19,8 @@ class CatForm(forms.ModelForm):
             'photo': 'A majestic photo of me. Optional, but recommended.',
         }
         widgets = {
-            'birth_date': forms.DateInput(attrs={'type': 'date'}),
+            'birth_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'personality': forms.Select(attrs={'class': 'form-select'}),
+            'photo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }

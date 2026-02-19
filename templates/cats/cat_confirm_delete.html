@@ -2,16 +2,18 @@
 
 {% block content %}
 
-    <h1>Erase My Profile?</h1>
+    <h1 class="mb-4">Erase My Profile?</h1>
 
-    <p>
-        Are you sure you want to remove {{ object.name }} from the diary?
+    <p class="mb-4">
+        Are you sure you want to remove <strong>{{ cat.name }}</strong> from the diary?
     </p>
 
-    <form method="post">
+    <form method="post" class="mb-3">
         {% csrf_token %}
-        <button type="submit">Yes, erase me</button>
-        <a href="{% url 'cats:detail' object.pk %}">Cancel</a>
+
+        <button type="submit" class="btn btn-soft me-2">Yes, erase me</button>
+
+        <a href="{% url 'cats:detail' object.pk %}" class="btn btn-outline-secondary">Cancel</a>
     </form>
 
 {% endblock %}

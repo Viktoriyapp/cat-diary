@@ -2,13 +2,18 @@
 
 {% block content %}
 
-    <h1>All of Us Cats</h1>
+    <h1 class="mb-4">All of Us Cats</h1>
 
     {% if cats %}
-        <ul>
+        <ul class="list-group mb-4">
             {% for cat in cats %}
-                <li>
-                    <a href="{% url 'cats:detail' cat.pk %}">{{ cat.name }}</a> - {{ cat.personality }}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <a href="{% url 'cats:detail' cat.pk %}" class="text-decoration-none fw-semibold">{{ cat.name }}</a>
+                        <small class="text-muted"> - {{ cat.personality }}</small>
+                    </div>
+
                 </li>
             {% endfor %}
         </ul>
@@ -16,7 +21,7 @@
         <p>No cats have registered yet.</p>
     {% endif %}
 
-    <a href="{% url 'cats:create' %}">Add new member</a> <br> <br>
+    <a href="{% url 'cats:create' %}" class="btn btn-soft mb-4">Add new member</a>
 
     {% include 'common/pagination.html' %}
 

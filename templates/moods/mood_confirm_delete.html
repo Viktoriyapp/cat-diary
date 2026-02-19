@@ -2,16 +2,18 @@
 
 {% block content %}
 
-    <h1>Erase This Memory?</h1>
+    <h1 class="mb-4">Erase This Memory?</h1>
 
-    <p>
-        Are you sure you want to delete the diary entry from {{ object.date }}?
+    <p class="mb-4">
+        Are you sure you want to delete <strong>{{ mood.cat.name }}`s</strong> diary entry from <strong>{{ object.date }}</strong>?
     </p>
 
-    <form method="post">
+    <form method="post" class="mb-3">
         {% csrf_token %}
-        <button type="submit">Yes, erase it</button>
-        <a href="{% url 'moods:detail' object.pk %}">Cancel</a>
+
+        <button type="submit" class="btn btn-soft me-2">Yes, erase it</button>
+
+        <a href="{% url 'moods:detail' object.pk %}" class="btn btn-outline-secondary">Cancel</a>
     </form>
 
 {% endblock %}
