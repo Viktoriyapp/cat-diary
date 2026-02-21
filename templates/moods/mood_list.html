@@ -64,7 +64,7 @@
 
                     <div>
                         <a href="{% url 'moods:detail' mood.pk %}" class="text-decoration-none">{{ mood.date }}
-                            – {{ mood.mood }}</a>
+                            – {{ mood.mood|capfirst }}</a>
                         <small class="text-muted">({{ mood.cat.name }})</small>
                     </div>
 

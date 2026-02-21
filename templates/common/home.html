@@ -34,7 +34,7 @@
             <p>No cats yet. Be the first to join the diary!</p>
         {% else %}
             <p>We have <strong>{{ total_cats }} total cats!</strong></p>
-            <p>With <strong>{{ total_entries }} mood entries in total...</strong></p>
+            <p>With <strong>{{ total_entries|default:0 }} mood entries in total...</strong></p>
         {% endif %}
 
         {% if most_active_cat %}
