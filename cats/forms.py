@@ -24,3 +24,10 @@ class CatForm(forms.ModelForm):
             'personality': forms.Select(attrs={'class': 'form-select'}),
             'photo': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
+
+class CatUpdateForm(CatForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['name'].disabled = True

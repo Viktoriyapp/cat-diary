@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from cats.forms import CatForm
+from cats.forms import CatForm, CatUpdateForm
 from cats.models import Cat
 
 
@@ -30,7 +30,7 @@ class CatCreateView(CreateView):
 
 class CatUpdateView(UpdateView):
     model = Cat
-    form_class = CatForm
+    form_class = CatUpdateForm
     template_name = 'cats/cat_update.html'
     success_url = reverse_lazy('cats:list')
 
