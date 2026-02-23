@@ -1,0 +1,633 @@
+[
+{
+  "model": "activities.activity",
+  "pk": 1,
+  "fields": {
+    "name": "Chasing the red laser",
+    "category": "play",
+    "energy_cost": 3,
+    "description": "A high-speed chase across the entire house in pursuit of the mysterious red dot. Includes sliding, jumping, and dramatic turns.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 2,
+  "fields": {
+    "name": "Attacking a toy mouse",
+    "category": "play",
+    "energy_cost": 2,
+    "description": "A tactical ambush on a plush toy mouse, complete with stalking, pouncing, and repeated victorious bites.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 3,
+  "fields": {
+    "name": "Midnight zoomies",
+    "category": "play",
+    "energy_cost": 3,
+    "description": "Sudden explosive sprinting from room to room at 3 AM for absolutely no visible reason.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 4,
+  "fields": {
+    "name": "Playing with a cardboard box",
+    "category": "play",
+    "energy_cost": 1,
+    "description": "Entering, exiting, and dramatically defending a cardboard box as if it were a fortified castle.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 5,
+  "fields": {
+    "name": "Sleeping on the keyboard",
+    "category": "sleep",
+    "energy_cost": 1,
+    "description": "Strategically choosing the most inconvenient place possible to rest Ч usually during important work.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 6,
+  "fields": {
+    "name": "Deep couch hibernation",
+    "category": "sleep",
+    "energy_cost": 1,
+    "description": "A long, immovable sleep session buried in cushions like a furry loaf of bread.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 7,
+  "fields": {
+    "name": "Eating wet food",
+    "category": "food",
+    "energy_cost": 1,
+    "description": "Focused and enthusiastic consumption of gourmet canned delicacy.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 8,
+  "fields": {
+    "name": "Demanding food loudly",
+    "category": "food",
+    "energy_cost": 2,
+    "description": "Persistent and dramatic vocal performance in front of the food bowl until demands are met.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 9,
+  "fields": {
+    "name": "Stealing food from the table",
+    "category": "food",
+    "energy_cost": 2,
+    "description": "A sneaky operation involving timing, precision, and zero remorse.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 10,
+  "fields": {
+    "name": "Sitting on owner's lap",
+    "category": "affection",
+    "energy_cost": 1,
+    "description": "Claiming human lap territory and activating the purring engine.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 11,
+  "fields": {
+    "name": "Head-bumping human",
+    "category": "affection",
+    "energy_cost": 1,
+    "description": "A gentle forehead nudge as a sign of ownership and affection.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 12,
+  "fields": {
+    "name": "Purring loudly",
+    "category": "affection",
+    "energy_cost": 1,
+    "description": "A deep rumbling sound expressing comfort, happiness, or strategic manipulation.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 13,
+  "fields": {
+    "name": "Bringing a 'gift'",
+    "category": "affection",
+    "energy_cost": 2,
+    "description": "Delivering a toy, sock, or unexpected prey as a thoughtful offering.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 14,
+  "fields": {
+    "name": "Scratching the sofa",
+    "category": "destruction",
+    "energy_cost": 1,
+    "description": "Sharpening claws on premium furniture despite the existence of a scratching post.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 15,
+  "fields": {
+    "name": "Knocking objects off table",
+    "category": "destruction",
+    "energy_cost": 1,
+    "description": "Slowly pushing items off surfaces while maintaining eye contact.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 16,
+  "fields": {
+    "name": "Destroying toilet paper",
+    "category": "destruction",
+    "energy_cost": 2,
+    "description": "Transforming a full toilet roll into snowy indoor chaos.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 17,
+  "fields": {
+    "name": "Biting charger cables",
+    "category": "destruction",
+    "energy_cost": 1,
+    "description": "Testing the durability of suspicious electronic snakes.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 18,
+  "fields": {
+    "name": "Exploring a new room",
+    "category": "exploration",
+    "energy_cost": 2,
+    "description": "Thorough inspection of unfamiliar territory with cautious stepping and intense sniffing.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 19,
+  "fields": {
+    "name": "Sniffing grocery bags",
+    "category": "exploration",
+    "energy_cost": 1,
+    "description": "Investigating fresh arrivals to ensure no threats (or treats) were smuggled in.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 20,
+  "fields": {
+    "name": "Balcony patrol",
+    "category": "exploration",
+    "energy_cost": 1,
+    "description": "Watching over the outside world like a vigilant guardian of the building.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 21,
+  "fields": {
+    "name": "Inspecting closet contents",
+    "category": "exploration",
+    "energy_cost": 2,
+    "description": "Diving into newly opened closets to investigate hidden realms.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 22,
+  "fields": {
+    "name": "Staring at nothing",
+    "category": "weird",
+    "energy_cost": 1,
+    "description": "Fixating intensely on a completely empty wall for an uncomfortable amount of time.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 23,
+  "fields": {
+    "name": "Random 3AM scream",
+    "category": "weird",
+    "energy_cost": 2,
+    "description": "An unexpected nighttime vocal performance that wakes the entire household.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 24,
+  "fields": {
+    "name": "Sudden backflip",
+    "category": "weird",
+    "energy_cost": 3,
+    "description": "A spontaneous acrobatic move executed without warning or context.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 25,
+  "fields": {
+    "name": "Sleeping in impossible position",
+    "category": "weird",
+    "energy_cost": 1,
+    "description": "Resting in a pose that defies basic anatomy and physics.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 26,
+  "fields": {
+    "name": "Judging the human silently",
+    "category": "observation",
+    "energy_cost": 1,
+    "description": "Maintaining prolonged eye contact as if evaluating life decisions.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 27,
+  "fields": {
+    "name": "Watching birds from window",
+    "category": "observation",
+    "energy_cost": 1,
+    "description": "Intense chirping and tail twitching while observing birds from indoors.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 28,
+  "fields": {
+    "name": "Doorway surveillance",
+    "category": "observation",
+    "energy_cost": 1,
+    "description": "Sitting in doorways to monitor movements and assert authority.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 29,
+  "fields": {
+    "name": "Claiming a cardboard box",
+    "category": "territory",
+    "energy_cost": 1,
+    "description": "Establishing dominance over an empty box and refusing relocation.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 30,
+  "fields": {
+    "name": "Blocking hallway passage",
+    "category": "territory",
+    "energy_cost": 1,
+    "description": "Strategically positioning body in narrow spaces to control traffic.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 31,
+  "fields": {
+    "name": "Sitting on laptop",
+    "category": "territory",
+    "energy_cost": 1,
+    "description": "Reclaiming warm electronics as personal property.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "activities.activity",
+  "pk": 32,
+  "fields": {
+    "name": "Guarding food bowl",
+    "category": "territory",
+    "energy_cost": 2,
+    "description": "Protecting the food supply from imaginary competitors.",
+    "created_at": "2026-02-23T20:00:11.797Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 1,
+  "fields": {
+    "name": "Eggy",
+    "birth_date": "2023-05-24",
+    "personality": "calm",
+    "photo": "cats/images_1.jpg",
+    "created_at": "2026-02-16T04:12:49.459Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 2,
+  "fields": {
+    "name": "Miso",
+    "birth_date": "2025-09-10",
+    "personality": "fun",
+    "photo": "cats/Cat_s_Mind.webp",
+    "created_at": "2026-02-16T04:13:50.048Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 4,
+  "fields": {
+    "name": "Bubi",
+    "birth_date": "2024-07-26",
+    "personality": "loving",
+    "photo": "cats/cat-portraits-nils-jacobi-1.jpeg",
+    "created_at": "2026-02-16T02:50:35.603Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 5,
+  "fields": {
+    "name": "Milo",
+    "birth_date": "2021-05-12",
+    "personality": "curious",
+    "photo": "cats/ginger-cat-wearing-red-knitted-hat-scarf-winter-portrait.webp",
+    "created_at": "2026-02-17T00:28:19.615Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 6,
+  "fields": {
+    "name": "Luna",
+    "birth_date": "2020-08-03",
+    "personality": "loving",
+    "photo": "cats/Elegant-Lady-Custom-Pet-Portrait-4.jpg",
+    "created_at": "2026-02-17T00:28:19.623Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 7,
+  "fields": {
+    "name": "Shadow",
+    "birth_date": "2019-11-20",
+    "personality": "independent",
+    "photo": "cats/funny-red-cat-portrait-tabby-ginger-cat-looking-ginger-cat-pleased-orange-cat-look_daeFVS4.avif",
+    "created_at": "2026-02-17T00:28:19.624Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 8,
+  "fields": {
+    "name": "Pumpkin",
+    "birth_date": "2022-03-14",
+    "personality": "fun",
+    "photo": "",
+    "created_at": "2026-02-17T00:28:19.626Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 9,
+  "fields": {
+    "name": "Thor",
+    "birth_date": "2018-01-07",
+    "personality": "bad_tempered",
+    "photo": "",
+    "created_at": "2026-02-17T00:28:19.627Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 10,
+  "fields": {
+    "name": "Bella",
+    "birth_date": "2021-09-01",
+    "personality": "calm",
+    "photo": "cats/gray-kitty-with-monochrome-wall-her_23-2148955129.avif",
+    "created_at": "2026-02-17T00:28:19.629Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 11,
+  "fields": {
+    "name": "Simba",
+    "birth_date": "2020-06-30",
+    "personality": "mischievous",
+    "photo": "cats/cat-1045782_1280.jpg",
+    "created_at": "2026-02-17T00:28:19.630Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 13,
+  "fields": {
+    "name": "Monty",
+    "birth_date": "2021-11-09",
+    "personality": "independent",
+    "photo": "cats/Monty-small.jpg",
+    "created_at": "2026-02-20T22:36:06.739Z"
+  }
+},
+{
+  "model": "cats.cat",
+  "pk": 14,
+  "fields": {
+    "name": "Missy",
+    "birth_date": "2026-02-10",
+    "personality": "mischievous",
+    "photo": "cats/grey-kitty-with-monochrome-wall-her_23-2148955118_gJLmBtC.avif",
+    "created_at": "2026-02-20T23:41:37.736Z"
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 1,
+  "fields": {
+    "date": "2024-02-10",
+    "mood": "chaotic",
+    "energy_level": 3,
+    "personal_note": "Destroyed everything but looked adorable.",
+    "cat": 5,
+    "activities": [
+      1,
+      3,
+      14
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 2,
+  "fields": {
+    "date": "2024-02-10",
+    "mood": "cuddly",
+    "energy_level": 1,
+    "personal_note": "Very affectionate and sleepy today.",
+    "cat": 6,
+    "activities": []
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 3,
+  "fields": {
+    "date": "2024-02-11",
+    "mood": "alert",
+    "energy_level": 2,
+    "personal_note": "Watching birds intensely from the window.",
+    "cat": 7,
+    "activities": [
+      26,
+      27
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 4,
+  "fields": {
+    "date": "2026-02-18",
+    "mood": "chaotic",
+    "energy_level": 3,
+    "personal_note": "Today I conquered the couch, ambushed three invisible enemies, and nearly achieved flight from the bookshelf. The red dot escapedЕ but next time it wonТt be so lucky.",
+    "cat": 2,
+    "activities": [
+      1,
+      3,
+      15
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 5,
+  "fields": {
+    "date": "2026-02-17",
+    "mood": "alert",
+    "energy_level": 2,
+    "personal_note": "There was a suspicious bird outside. I monitored it for 47 minutes. It blinked first. I won.",
+    "cat": 2,
+    "activities": [
+      27,
+      20,
+      28
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 6,
+  "fields": {
+    "date": "2026-02-16",
+    "mood": "irritated",
+    "energy_level": 2,
+    "personal_note": "Human moved me from my perfectly strategic hallway position. This is betrayal. I retaliated with moderate sofa damage.",
+    "cat": 2,
+    "activities": [
+      14,
+      30
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 7,
+  "fields": {
+    "date": "2026-02-15",
+    "mood": "happy",
+    "energy_level": 3,
+    "personal_note": "I leaped. I sprinted. I parkoured. I absolutely demolished the invisible army in the kitchen.",
+    "cat": 2,
+    "activities": [
+      2
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 9,
+  "fields": {
+    "date": "2026-02-13",
+    "mood": "sleepy",
+    "energy_level": 1,
+    "personal_note": "Today I loafed. I absorbed sun energy. I judged no one (much). Productivity level: majestic.",
+    "cat": 2,
+    "activities": [
+      25
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 10,
+  "fields": {
+    "date": "2026-02-14",
+    "mood": "dramatic",
+    "energy_level": 2,
+    "personal_note": "Food bowl was only 93% full. I sang the song of my people until the situation improved.",
+    "cat": 2,
+    "activities": [
+      8,
+      32
+    ]
+  }
+},
+{
+  "model": "moods.moodentry",
+  "pk": 11,
+  "fields": {
+    "date": "2026-02-16",
+    "mood": "sad",
+    "energy_level": 1,
+    "personal_note": "My human said I cant get more treats because Im chuncky... So i pushed the cookie jar off the counter. Im not mad, just dissapointed...",
+    "cat": 7,
+    "activities": [
+      15
+    ]
+  }
+}
+]
