@@ -18,6 +18,7 @@ class Activity(models.Model):
     category = models.CharField(choices=CategoryChoices.choices, max_length=30)
     energy_cost = models.IntegerField(choices=EnergyChoices.choices)
     description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name

@@ -13,7 +13,7 @@ class ActivityListView(ListView):
     template_name = 'activities/activity_list.html' #used by default, but prefer to see it
     context_object_name = 'activities'
     paginate_by = 7
-    ordering = ['category', 'name']
+    ordering = ['-created_at']
 
     def get_queryset(self):
         queryset = super().get_queryset()
