@@ -13,3 +13,4 @@ env/
 
 # Django
 db.sqlite3
+.db

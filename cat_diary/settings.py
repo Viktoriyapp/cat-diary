@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'cat_diary.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "cat_diary_db",
-        "USER": "postgres",
-        "PASSWORD": "1234",
+        "NAME": "mydatabase",
+        "USER": "mydatabaseuser",
+        "PASSWORD": "mypassword",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
