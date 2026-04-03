@@ -32,7 +32,7 @@ The goal of this project is to demonstrate understanding of Django fundamentals 
 ---
 
 ## Project Setup Instructions
-To run this project ypu will need:
+To run this project you will need:
 - Python 3.12
 - pillow for media files
 - psycopg2-binary
