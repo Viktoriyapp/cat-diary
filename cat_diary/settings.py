@@ -31,6 +31,7 @@ PROJECT_APPS = [
     'activities',
     'moods',
     'common',
+    'accounts',
 ]
 
 INSTALLED_APPS = [
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'cat_diary.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "cat_diary_db",
+        "NAME": "cat_diary_db_advanced",
         "USER": "postgres",
         "PASSWORD": "1234",
         "HOST": "127.0.0.1",
