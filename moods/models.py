@@ -3,8 +3,6 @@ from moods.validators import date_validator
 from common.choices import EnergyChoices
 
 
-# Create your models here.
-
 class MoodEntry(models.Model): # The mood for the day
     class MoodChoices(models.TextChoices):
         HAPPY = 'happy', 'Happy'
@@ -32,6 +30,7 @@ class MoodEntry(models.Model): # The mood for the day
             fields=['cat', 'date'],
             name = 'unique_cat_date_entry',
         )]
+        permissions = [('can_view_all_moods', 'Can view all mood entries')]
 
     def __str__(self):
         return f'{self.cat.name} - {self.date}'

@@ -26,5 +26,8 @@ class Cat(models.Model):
         blank=True,
     )
 
+    class Meta:
+        permissions = [('can_manage_cat_profiles', 'Can manage cat profiles')]
+
     def __str__(self):
         return self.name
