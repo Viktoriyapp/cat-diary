@@ -17,13 +17,9 @@ class MoodEntryListView(LoginRequiredMixin, ListView):
     ordering = '-date'
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().filter(cat=self.request.user.cat)
 
-        cat_id = self.request.GET.get('cat') # if we have parameter cat
         mood = self.request.GET.get('mood')
-
-        if cat_id:
-            queryset = queryset.filter(cat_id=cat_id)
 
         if mood:
             queryset = queryset.filter(mood=mood)
@@ -32,15 +28,13 @@ class MoodEntryListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['cats'] = Cat.objects.all() # for dropdown
+        context['cats'] = Cat.objects.filter(user=self.request.user)
 
-        context['selected_cat'] = self.request.GET.get('cat')
+        context['selected_cat'] = str(self.request.user.cat.pk)
         context['selected_mood'] = self.request.GET.get('mood')
         context['mood_choices'] = MoodEntry.MoodChoices.choices
 
-        context['has_filters'] = bool(
-            self.request.GET.get('cat') or self.request.GET.get('mood')
-        ) # for button "clear filters"
+        context['has_filters'] = bool(self.request.GET.get('mood'))
 
         return context
 
@@ -50,12 +44,19 @@ class MoodEntryDetailView(LoginRequiredMixin, DetailView):
     template_name = 'moods/mood_detail.html'
     context_object_name = 'mood'
 
+    def get_queryset(self):
+        return super().get_queryset().filter(cat=self.request.user.cat)
+
 
 class MoodEntryCreateView(LoginRequiredMixin, CreateView):
     model = MoodEntry
     form_class = MoodEntryForm
     template_name = 'moods/mood_create.html'
     success_url = reverse_lazy('moods:list')
+
+    def form_valid(self, form):
+        form.instance.cat = self.request.user.cat
+        return super().form_valid(form)
 
 
 class MoodEntryUpdateView(LoginRequiredMixin, UpdateView):
@@ -65,9 +66,15 @@ class MoodEntryUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('moods:list')
     context_object_name = 'mood'
 
+    def get_queryset(self):
+        return super().get_queryset().filter(cat=self.request.user.cat)
+
 
 class MoodEntryDeleteView(LoginRequiredMixin, DeleteView):
     model = MoodEntry
     template_name = 'moods/mood_confirm_delete.html'
     success_url = reverse_lazy('moods:list')
     context_object_name = 'mood'
+
+    def get_queryset(self):
+        return super().get_queryset().filter(cat=self.request.user.cat)
