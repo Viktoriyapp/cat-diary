@@ -9,7 +9,7 @@ from moods.models import MoodEntry
 class MoodEntryForm(forms.ModelForm):
     class Meta:
         model = MoodEntry
-        fields = '__all__'
+        fields = ['date', 'mood', 'energy_level', 'activities', 'personal_note']
 
         labels = {
             'date': 'Today`s date',
@@ -28,7 +28,6 @@ class MoodEntryForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'mood': forms.Select(attrs={'class': 'form-select'}),
             'energy_level': forms.Select(attrs={'class': 'form-select'}),
-            'cat': forms.Select(attrs={'class': 'form-select'}),
             'activities': forms.SelectMultiple(attrs={'class': 'form-select'}),
             'personal_note': forms.Textarea(attrs={
                 'placeholder': 'Today I conquered the couch and defeated the red dot!',
@@ -39,10 +38,6 @@ class MoodEntryForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        if self.instance.pk: #disable cat instance on update
-            self.fields['cat'].disabled = True
-
         self.fields['activities'].queryset = Activity.objects.order_by('name')
 
     def clean_personal_note(self):
