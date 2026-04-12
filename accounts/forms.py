@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.db import transaction
 
 from cats.models import Cat
@@ -31,4 +31,9 @@ class CatUserRegisterForm(UserCreationForm):
             personality=self.cleaned_data['personality'],
             photo=self.cleaned_data['photo'],
         )
+
+        cat_users_group = Group.objects.filter(name='CatUsers').first()
+        if cat_users_group:
+            user.groups.add(cat_users_group)
+
         return user
