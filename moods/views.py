@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from cats.models import Cat
 from moods.forms import MoodEntryForm
+from moods.mixins import MoodEntryAccessMixin
 from moods.models import MoodEntry
 
 
@@ -74,13 +75,10 @@ class AllMoodEntryListView(PermissionRequiredMixin, ListView):
         return context
 
 
-class MoodEntryDetailView(LoginRequiredMixin, DetailView):
+class MoodEntryDetailView(LoginRequiredMixin, MoodEntryAccessMixin, DetailView):
     model = MoodEntry
     template_name = 'moods/mood_detail.html'
     context_object_name = 'mood'
-
-    def get_queryset(self):
-        return super().get_queryset().filter(cat=self.request.user.cat)
 
 
 class MoodEntryCreateView(LoginRequiredMixin, CreateView):
@@ -94,22 +92,16 @@ class MoodEntryCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class MoodEntryUpdateView(LoginRequiredMixin, UpdateView):
+class MoodEntryUpdateView(LoginRequiredMixin,MoodEntryAccessMixin, UpdateView):
     model = MoodEntry
     form_class = MoodEntryForm
     template_name = 'moods/mood_update.html'
     success_url = reverse_lazy('moods:list')
     context_object_name = 'mood'
 
-    def get_queryset(self):
-        return super().get_queryset().filter(cat=self.request.user.cat)
 
-
-class MoodEntryDeleteView(LoginRequiredMixin, DeleteView):
+class MoodEntryDeleteView(LoginRequiredMixin, MoodEntryAccessMixin, DeleteView):
     model = MoodEntry
     template_name = 'moods/mood_confirm_delete.html'
     success_url = reverse_lazy('moods:list')
     context_object_name = 'mood'
-
-    def get_queryset(self):
-        return super().get_queryset().filter(cat=self.request.user.cat)
