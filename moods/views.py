@@ -29,12 +29,8 @@ class MoodEntryListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['cats'] = Cat.objects.filter(user=self.request.user)
-
-        context['selected_cat'] = str(self.request.user.cat.pk)
         context['selected_mood'] = self.request.GET.get('mood')
         context['mood_choices'] = MoodEntry.MoodChoices.choices
-
         context['has_filters'] = bool(self.request.GET.get('mood'))
 
         return context
