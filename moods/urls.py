@@ -6,6 +6,7 @@ app_name = 'moods'
 
 urlpatterns = [
     path('',views.MoodEntryListView.as_view(),name='list'),
+    path('all/', views.AllMoodEntryListView.as_view(),name='all'),
     path('create/', views.MoodEntryCreateView.as_view(), name='create'),
     path('<int:pk>/', include([
         path('', views.MoodEntryDetailView.as_view(), name='detail'),
