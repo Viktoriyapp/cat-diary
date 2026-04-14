@@ -4,13 +4,13 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from cats.models import Cat
 from moods.forms import MoodEntryForm
-from moods.mixins import MoodEntryAccessMixin
+from moods.mixins import MoodEntryAccessMixin, UserHasCatProfileMixin
 from moods.models import MoodEntry
 
 
 # Create your views here.
 
-class MoodEntryListView(LoginRequiredMixin, ListView):
+class MoodEntryListView(LoginRequiredMixin, UserHasCatProfileMixin, ListView):
     model = MoodEntry
     template_name = 'moods/mood_list.html'
     context_object_name = 'moods'
@@ -77,7 +77,7 @@ class MoodEntryDetailView(LoginRequiredMixin, MoodEntryAccessMixin, DetailView):
     context_object_name = 'mood'
 
 
-class MoodEntryCreateView(LoginRequiredMixin, CreateView):
+class MoodEntryCreateView(LoginRequiredMixin, UserHasCatProfileMixin, CreateView):
     model = MoodEntry
     form_class = MoodEntryForm
     template_name = 'moods/mood_create.html'
