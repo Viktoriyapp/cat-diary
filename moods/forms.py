@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 from activities.models import Activity
 from common.choices import EnergyChoices
-from moods.models import MoodEntry
+from moods.models import MoodEntry, MoodTag
 
 
 class MoodEntryForm(forms.ModelForm):
@@ -57,3 +57,50 @@ class MoodEntryForm(forms.ModelForm):
             raise forms.ValidationError('If you`re sleepy, you cannot have high energy.')
 
         return cleaned_data
+
+
+class MoodTagForm(forms.ModelForm):
+    class Meta:
+        model = MoodTag
+        fields = ['name', 'description']
+
+        labels = {
+            'name': 'Tag name',
+            'description': 'Tag description',
+        }
+
+        help_texts = {
+            'name': 'Choose a short mood label such as Cozy or Zoomies.',
+            'description': 'Optional short explanation of the tag.',
+        }
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'placeholder': 'Cozy',
+                'class': 'form-control',
+            }),
+            'description': forms.Textarea(attrs={
+                'placeholder': 'A soft and peaceful diary tag.',
+                'rows': 3,
+                'class': 'form-control',
+            }),
+        }
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+
+        if name and len(name.strip()) < 2:
+            raise forms.ValidationError('Tag name must be at least 2 characters long.')
+
+        queryset = MoodTag.objects.filter(name__iexact=name)
+        if self.instance.pk:
+            queryset = queryset.exclude(pk=self.instance.pk)
+
+        if queryset.exists():
+            raise forms.ValidationError('A tag with this name already exists.')
+        return name
+
+class MoodTagUpdateForm(MoodTagForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].disabled = True
