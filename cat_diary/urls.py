@@ -29,6 +29,7 @@ urlpatterns = [
     path('cats/', include('cats.urls')),
     path('moods/', include('moods.urls')),
     path('activities/', include('activities.urls')),
+    path('api/', include('api.urls')),
 ]
 
 handler404 = 'common.views.custom_404'
