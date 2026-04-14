@@ -34,3 +34,15 @@ class MoodEntry(models.Model): # The mood for the day
 
     def __str__(self):
         return f'{self.cat.name} - {self.date}'
+
+
+class MoodTag(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+    description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
