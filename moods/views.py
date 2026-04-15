@@ -83,6 +83,11 @@ class MoodEntryCreateView(LoginRequiredMixin, UserHasCatProfileMixin, CreateView
     template_name = 'moods/mood_create.html'
     success_url = reverse_lazy('moods:list')
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def form_valid(self, form):
         form.instance.cat = self.request.user.cat
         return super().form_valid(form)
@@ -94,6 +99,11 @@ class MoodEntryUpdateView(LoginRequiredMixin,MoodEntryAccessMixin, UpdateView):
     template_name = 'moods/mood_update.html'
     success_url = reverse_lazy('moods:list')
     context_object_name = 'mood'
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class MoodEntryDeleteView(LoginRequiredMixin, MoodEntryAccessMixin, DeleteView):

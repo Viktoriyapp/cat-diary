@@ -41,10 +41,15 @@ class MoodEntryForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
+
         self.fields['activities'].queryset = Activity.objects.order_by('name')
         self.fields['day_tags'].queryset = DayTag.objects.order_by('name')
-        self.fields['toys'].queryset = Toy.objects.none() # will say who the user is from view
+        self.fields['toys'].queryset = Toy.objects.none()
+
+        if user and hasattr(user, 'cat'):
+            self.fields['toys'].queryset = Toy.objects.filter(cat=user.cat).order_by('name')
 
     def clean_personal_note(self):
         note = self.cleaned_data.get('personal_note')
