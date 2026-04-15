@@ -45,9 +45,25 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
 
                     <div>
-                        <a href="{% url 'moods:detail' mood.pk %}" class="text-decoration-none">{{ mood.date }}
-                            – {{ mood.mood|capfirst }}</a>
+                        <a href="{% url 'moods:detail' mood.pk %}" class="text-decoration-none">{{ mood.date }} – {{ mood.mood|capfirst }}</a>
                         <small class="text-muted">({{ mood.cat.name }})</small>
+
+                        {% if mood.day_tags.all %}
+                            <div class="mt-1">
+                                {% for tag in mood.day_tags.all %}
+                                    <span class="badge rounded-pill text-bg-light border">🐾 {{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if mood.toys.all %}
+                            <div class="mt-1">
+                                {% for toy in mood.toys.all %}
+                                    <span class="badge rounded-pill text-bg-warning-subtle border">{{ toy.name }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
                     </div>
 
                 </li>

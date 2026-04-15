@@ -9,7 +9,81 @@
     <form method="post" class="mb-3">
         {% csrf_token %}
 
-        <div class="mb-3">{{ form.as_p }}</div>
+        <div class="mb-3">
+            {{ form.date.label_tag }}
+            {{ form.date }}
+            {% if form.date.help_text %}
+                <div class="form-text">{{ form.date.help_text }}</div>
+            {% endif %}
+            {{ form.date.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.mood.label_tag }}
+            {{ form.mood }}
+            {% if form.mood.help_text %}
+                <div class="form-text">{{ form.mood.help_text }}</div>
+            {% endif %}
+            {{ form.mood.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.energy_level.label_tag }}
+            {{ form.energy_level }}
+            {% if form.energy_level.help_text %}
+                <div class="form-text">{{ form.energy_level.help_text }}</div>
+            {% endif %}
+            {{ form.energy_level.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.activities.label_tag }}
+            {{ form.activities }}
+            {% if form.activities.help_text %}
+                <div class="form-text">{{ form.activities.help_text }}</div>
+            {% endif %}
+            {{ form.activities.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.day_tags.label_tag }}
+            {{ form.day_tags }}
+            {% if form.day_tags.help_text %}
+                <div class="form-text">{{ form.day_tags.help_text }}</div>
+            {% endif %}
+            {{ form.day_tags.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.toys.label_tag }}
+            {{ form.toys }}
+            {% if form.toys.help_text %}
+                <div class="form-text">{{ form.toys.help_text }}</div>
+            {% endif %}
+            {{ form.toys.errors }}
+
+            <p class="mt-2 mb-0">
+                <small>
+                    &#129528; Don’t have a toy yet or have a new one?
+                    <a href="#">Add one here</a>.
+                </small>
+            </p>
+        </div>
+
+        <div class="mb-3">
+            {{ form.personal_note.label_tag }}
+            {{ form.personal_note }}
+            {% if form.personal_note.help_text %}
+                <div class="form-text">{{ form.personal_note.help_text }}</div>
+            {% endif %}
+            {{ form.personal_note.errors }}
+        </div>
+
+        {% if form.non_field_errors %}
+            <div class="mb-3">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
 
         <button type="submit" class="btn btn-soft">Save</button>
     </form>

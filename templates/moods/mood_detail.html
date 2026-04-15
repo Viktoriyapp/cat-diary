@@ -12,6 +12,17 @@
 
     <p class="mb-2"><strong>Energy level:</strong> {{ mood.get_energy_level_display }}</p>
 
+    <p><strong>Day tags:</strong></p>
+    {% if mood.day_tags.all %}
+        <div class="mb-3">
+            {% for tag in mood.day_tags.all %}
+                <span class="badge rounded-pill text-bg-light border">🐾 {{ tag.name }}</span>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No day tags for this entry.</p>
+    {% endif %}
+
     {% if mood.activities.all %}
         <p class="mt-3 mb-1"><strong>Activities:</strong></p>
 
@@ -20,6 +31,17 @@
                 <li class="list-group-item">{{ activity.name }}</li>
             {% endfor %}
         </ul>
+    {% endif %}
+
+    <p><strong>Toys used that day:</strong></p>
+    {% if mood.toys.all %}
+        <div class="mb-3">
+            {% for toy in mood.toys.all %}
+                <span class="badge rounded-pill text-bg-warning-subtle border">{{ toy.name }}</span>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No toys selected for this day.</p>
     {% endif %}
 
     {% if mood.personal_note %}
