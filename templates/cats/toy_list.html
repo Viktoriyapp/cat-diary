@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Toys</h2>
+
+<a href="{% url 'cats:toy-create' %}" class="btn btn-soft mb-3">Add New Toy</a>
+
+<ul class="list-group">
+    {% for toy in toys %}
+        <li class="list-group-item d-flex justify-content-between">
+            <span>
+                {% if toy.is_favorite %} ⭐ {% endif %}
+                {{ toy.name }} | {{ toy.description }}
+
+            </span>
+
+            <span>
+                <a href="{% url 'cats:toy-update' toy.pk %}">Edit</a> |
+                <a href="{% url 'cats:toy-delete' toy.pk %}">Delete</a>
+            </span>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No toys yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
