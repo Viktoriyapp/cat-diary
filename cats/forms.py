@@ -36,10 +36,9 @@ class CatUpdateForm(CatForm):
 class ToyForm(forms.ModelForm):
     class Meta:
         model = Toy
-        fields = ['name', 'toy_type', 'description', 'is_favorite']
+        fields = ['name', 'description', 'is_favorite']
         labels = {
             'name': 'Toy name',
-            'toy_type': 'Type of toy',
             'description': 'Toy description',
             'is_favorite': 'Is this my favorite toy?',
         }
@@ -50,7 +49,6 @@ class ToyForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                     attrs={'placeholder': 'Red Ball','class': 'form-control'}),
-            'toy_type': forms.Select(attrs={'class': 'form-select'}),
             'description': forms.Textarea(
                     attrs={'rows': 3,
                     'class': 'form-control',

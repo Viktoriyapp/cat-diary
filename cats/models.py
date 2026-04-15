@@ -33,22 +33,7 @@ class Cat(models.Model):
 
 
 class Toy(models.Model):
-    class ToyTypeChoices(models.TextChoices):
-        BALL = 'ball', 'Ball'
-        MOUSE = 'mouse', 'Mouse'
-        FEATHER = 'feather', 'Feather'
-        BOX = 'box', 'Box'
-        LASER = 'laser', 'Laser'
-        PLUSH = 'plush', 'Plush'
-        STRING = 'string', 'String'
-        HAIR_TIE = 'hair_tie', 'Hair Tie'
-        SPRING = 'spring', 'Spring'
-        CRINKLE = 'crinkle', 'Crinkle Toy'
-        BOTTLE_CAP = 'bottle_cap', 'Bottle Cap'
-        OTHER = 'other', 'Other'
-
     name = models.CharField(max_length=30)
-    toy_type = models.CharField(max_length=20, choices=ToyTypeChoices.choices)
     description = models.TextField(null=True, blank=True)
     is_favorite = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
