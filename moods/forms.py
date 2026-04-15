@@ -1,27 +1,27 @@
 from django import forms
-from django.core.exceptions import ValidationError
-
 from activities.models import Activity
 from common.choices import EnergyChoices
-from moods.models import MoodEntry, MoodTag
+from moods.models import MoodEntry, DayTag
 
 
 class MoodEntryForm(forms.ModelForm):
     class Meta:
         model = MoodEntry
-        fields = ['date', 'mood', 'energy_level', 'activities', 'personal_note']
+        fields = ['date', 'mood', 'energy_level', 'activities', 'personal_note', 'day_tags']
 
         labels = {
             'date': 'Today`s date',
             'mood': 'How am I today?',
             'energy_level': 'How much energy do I have?',
             'activities': 'What did I do today?',
-            'personal_note': 'My personal diary note'
+            'personal_note': 'My personal diary note',
+            'day_tags': 'How would I describe this day?',
         }
 
         help_texts = {
             'activities': 'Mark the activities you tackled today',
-            'personal_note': 'Optional... but do share your secret thoughts'
+            'personal_note': 'Optional... but do share your secret thoughts',
+            'day_tags': 'Optional tags that describe the vibe of the day.'
         }
 
         widgets = {
@@ -34,11 +34,13 @@ class MoodEntryForm(forms.ModelForm):
                 'rows': 3,
                 'class': 'form-control',
             }),
+            'day_tags': forms.SelectMultiple(attrs={'class': 'form-select'})
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['activities'].queryset = Activity.objects.order_by('name')
+        self.fields['day_tags'].queryset = DayTag.objects.order_by('name')
 
     def clean_personal_note(self):
         note = self.cleaned_data.get('personal_note')
@@ -59,48 +61,3 @@ class MoodEntryForm(forms.ModelForm):
         return cleaned_data
 
 
-class MoodTagForm(forms.ModelForm):
-    class Meta:
-        model = MoodTag
-        fields = ['name', 'description']
-
-        labels = {
-            'name': 'Tag name',
-            'description': 'Tag description',
-        }
-
-        help_texts = {
-            'name': 'Choose a short mood label such as Cozy or Zoomies.',
-            'description': 'Optional short explanation of the tag.',
-        }
-
-        widgets = {
-            'name': forms.TextInput(attrs={
-                'placeholder': 'Cozy',
-                'class': 'form-control',
-            }),
-            'description': forms.Textarea(attrs={
-                'placeholder': 'A soft and peaceful diary tag.',
-                'rows': 3,
-                'class': 'form-control',
-            }),
-        }
-
-    def clean_name(self):
-        name = self.cleaned_data.get('name')
-
-        if name and len(name.strip()) < 2:
-            raise forms.ValidationError('Tag name must be at least 2 characters long.')
-
-        queryset = MoodTag.objects.filter(name__iexact=name)
-        if self.instance.pk:
-            queryset = queryset.exclude(pk=self.instance.pk)
-
-        if queryset.exists():
-            raise forms.ValidationError('A tag with this name already exists.')
-        return name
-
-class MoodTagUpdateForm(MoodTagForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['name'].disabled = True

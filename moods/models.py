@@ -24,9 +24,9 @@ class MoodEntry(models.Model): # The mood for the day
     activities = models.ManyToManyField('activities.Activity',
             related_name='mood_entries',
             blank=True) # 1 moodEntry can have many activities, and 1 activity can be for many moodEntries
-    tags = models.ManyToManyField('moods.MoodTag',
-            related_name='mood_entries',
-            blank=True)
+    day_tags = models.ManyToManyField('moods.DayTag',
+                                  related_name='mood_entries',
+                                  blank=True)
 
     class Meta:
         constraints = [models.UniqueConstraint(
@@ -39,7 +39,7 @@ class MoodEntry(models.Model): # The mood for the day
         return f'{self.cat.name} - {self.date}'
 
 
-class MoodTag(models.Model):
+class DayTag(models.Model): # How was the day
     name = models.CharField(max_length=30, unique=True)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
