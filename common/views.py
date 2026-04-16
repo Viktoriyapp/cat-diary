@@ -3,10 +3,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from cats.models import Cat
+from cats.utils import get_star_cat
 from moods.models import MoodEntry
-
-
-# Create your views here.
 
 class HomePageView(TemplateView):
     template_name = 'common/home.html'
@@ -16,17 +14,13 @@ class HomePageView(TemplateView):
 
         total_cats = Cat.objects.count()
         total_entries = MoodEntry.objects.count()
-        most_active_cat = (Cat.objects
-                .annotate(entries_count=Count('mood_entries'))
-                .order_by('-entries_count')
-                .first()
-            )
+        most_active_cat = get_star_cat()
+
         context.update({
             'total_cats': total_cats,
             'total_entries': total_entries,
             'most_active_cat': most_active_cat,
         })
-
         return context
 
 

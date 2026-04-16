@@ -22,6 +22,10 @@
                         <a href="{% url 'cats:detail' cat.pk %}"
                            class="text-decoration-none fw-semibold">{{ cat.name }}</a>
                         <small class="text-muted"> - {{ cat.get_personality_display|capfirst }}</small>
+
+                        {% if star_cat and cat.id == star_cat.id %}
+                            <span class="text-warning fw-bold"> &#127775; Star of Diary &#127775;</span>
+                        {% endif %}
                     </div>
 
                 </li>

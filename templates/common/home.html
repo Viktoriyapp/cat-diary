@@ -38,10 +38,9 @@
         {% endif %}
 
         {% if most_active_cat %}
-            <p class="mt-2">
-                Star of Diary:
+            <p class="mt-2">&#127775;Star of Diary&#127775; is
                 <strong>{{ most_active_cat.name }}</strong>
-                with {{ most_active_cat.entries_count }} diary entries!</p>
+                with {{ most_active_cat.mood_entries.count }} diary entries!</p>
         {% endif %}
 
         <hr class="my-4">
