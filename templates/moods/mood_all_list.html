@@ -42,6 +42,23 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="day_tag" class="form-label">Filter by day tag:</label>
+            <select name="day_tag" id="day_tag" class="form-select">
+                <option value="">All Day Tags</option>
+
+                {% for tag in day_tags %}
+                    <option value="{{ tag.id }}"
+                            {% if selected_day_tag == tag.id|stringformat:"s" %}
+                            selected
+                            {% endif %}
+                    >
+                        {{ tag.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-soft">Filter</button>
 
         {% if has_filters %}

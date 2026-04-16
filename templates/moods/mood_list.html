@@ -30,6 +30,24 @@
             </select>
         </div>
 
+        <!-- by DayTag filtering -->
+        <div class="mb-3">
+            <label for="day_tag" class="form-label">Filter by day tag:</label>
+            <select name="day_tag" id="day_tag" class="form-select">
+                <option value="">All Day Tags</option>
+
+                {% for tag in day_tags %}
+                    <option value="{{ tag.id }}"
+                            {% if selected_day_tag == tag.id|stringformat:"s" %}
+                            selected
+                            {% endif %}
+                    >
+                        {{ tag.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-soft">Filter</button>
 
         {% if has_filters %}
@@ -51,7 +69,7 @@
                         {% if mood.day_tags.all %}
                             <div class="mt-1">
                                 {% for tag in mood.day_tags.all %}
-                                    <span class="badge rounded-pill text-bg-light border">🐾 {{ tag.name }}</span>
+                                    <span class="badge rounded-pill text-bg-light border">{{ tag.icon }}{{ tag.name }}</span>
                                 {% endfor %}
                             </div>
                         {% endif %}

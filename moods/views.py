@@ -5,10 +5,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from cats.models import Cat
 from moods.forms import MoodEntryForm
 from moods.mixins import MoodEntryAccessMixin, UserHasCatProfileMixin
-from moods.models import MoodEntry
+from moods.models import MoodEntry, DayTag
 
 
-# Create your views here.
 
 class MoodEntryListView(LoginRequiredMixin, UserHasCatProfileMixin, ListView):
     model = MoodEntry
@@ -21,17 +20,24 @@ class MoodEntryListView(LoginRequiredMixin, UserHasCatProfileMixin, ListView):
         queryset = super().get_queryset().filter(cat=self.request.user.cat)
 
         mood = self.request.GET.get('mood')
+        day_tag = self.request.GET.get('day_tag')
 
         if mood:
             queryset = queryset.filter(mood=mood)
-        return queryset
+        if day_tag:
+            queryset = queryset.filter(day_tags__id=day_tag)
+
+        return queryset.distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         context['selected_mood'] = self.request.GET.get('mood')
+        context['selected_day_tag'] = self.request.GET.get('day_tag')
         context['mood_choices'] = MoodEntry.MoodChoices.choices
-        context['has_filters'] = bool(self.request.GET.get('mood'))
+        context['day_tags'] = DayTag.objects.order_by('name')
+        context['has_filters'] = bool(self.request.GET.get('mood')
+                                or self.request.GET.get('day_tag'))
 
         return context
 
@@ -49,23 +55,29 @@ class AllMoodEntryListView(PermissionRequiredMixin, ListView):
 
         cat_id = self.request.GET.get('cat')
         mood = self.request.GET.get('mood')
+        day_tag = self.request.GET.get('day_tag')
 
         if cat_id:
             queryset = queryset.filter(cat_id=cat_id)
-
         if mood:
             queryset = queryset.filter(mood=mood)
+        if day_tag:
+            queryset = queryset.filter(day_tags__id=day_tag)
 
-        return queryset
+        return queryset.distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         context['cats'] = Cat.objects.all()
+        context['day_tags'] = DayTag.objects.order_by('name')
         context['selected_cat'] = self.request.GET.get('cat')
         context['selected_mood'] = self.request.GET.get('mood')
+        context['selected_day_tag'] = self.request.GET.get('day_tag')
         context['mood_choices'] = MoodEntry.MoodChoices.choices
-        context['has_filters'] = bool(self.request.GET.get('cat') or self.request.GET.get('mood'))
+        context['has_filters'] = bool(self.request.GET.get('cat')
+                                or self.request.GET.get('mood')
+                                or self.request.GET.get('day_tag'))
         context['page_title'] = 'All Mood Entries'
 
         return context
