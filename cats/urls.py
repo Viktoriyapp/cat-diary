@@ -11,7 +11,6 @@ toy_pk_urls = [
 
 urlpatterns = [
     path('', views.CatListView.as_view(), name='list'),
-    path('create/', views.CatCreateView.as_view(), name='create'),
 
     path('<int:pk>/', include([
         path('', views.CatDetailView.as_view(), name='detail'),

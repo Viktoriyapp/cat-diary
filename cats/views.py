@@ -23,14 +23,6 @@ class CatDetailView(DetailView):
     context_object_name = 'cat'
 
 
-class CatCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    model = Cat
-    form_class = CatForm
-    template_name = 'cats/cat_create.html'
-    success_url = reverse_lazy('cats:list')
-    permission_required = 'cats.can_manage_cat_profiles'
-
-
 class CatUpdateView(UpdateView):
     model = Cat
     form_class = CatUpdateForm
