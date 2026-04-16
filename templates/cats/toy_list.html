@@ -10,7 +10,7 @@
     {% for toy in toys %}
         <li class="list-group-item d-flex justify-content-between">
             <span>
-                {% if toy.is_favorite %} ⭐ {% endif %}
+                {% if toy.is_favorite %} &#127775; {% endif %}
                 {{ toy.name }} | {{ toy.description }}
 
             </span>
