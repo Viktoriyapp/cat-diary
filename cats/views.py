@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from cats.forms import CatForm, CatUpdateForm
@@ -22,11 +23,12 @@ class CatDetailView(DetailView):
     context_object_name = 'cat'
 
 
-class CatCreateView(CreateView):
+class CatCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Cat
     form_class = CatForm
     template_name = 'cats/cat_create.html'
     success_url = reverse_lazy('cats:list')
+    permission_required = 'cats.can_manage_cat_profiles'
 
 
 class CatUpdateView(UpdateView):

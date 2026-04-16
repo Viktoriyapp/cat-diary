@@ -51,9 +51,11 @@
 
         <a href="{% url 'cats:list' %}" class="btn btn-outline-secondary">Meet the Cats</a>
 
-        <p class="mt-4">
-            Not registered yet?
-            <a href="{% url 'cats:create' %}" class="text-decoration-none fw-semibold">Add yourself</a>
-        </p>
+        {% if not user.is_authenticated %}
+            <p class="mt-3">
+                Not registered yet?
+                <a href="{% url 'register' %}" class="text-decoration-none fw-bold">Register here</a>
+            </p>
+        {% endif %}
     </div>
 {% endblock %}
