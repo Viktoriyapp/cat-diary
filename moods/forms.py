@@ -41,15 +41,15 @@ class MoodEntryForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
+        self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
         self.fields['activities'].queryset = Activity.objects.order_by('name')
         self.fields['day_tags'].queryset = DayTag.objects.order_by('name')
         self.fields['toys'].queryset = Toy.objects.none()
 
-        if user and hasattr(user, 'cat'):
-            self.fields['toys'].queryset = Toy.objects.filter(cat=user.cat).order_by('name')
+        if self.user and hasattr(self.user, 'cat'):
+            self.fields['toys'].queryset = Toy.objects.filter(cat=self.user.cat).order_by('name')
 
     def clean_personal_note(self):
         note = self.cleaned_data.get('personal_note')
@@ -60,12 +60,24 @@ class MoodEntryForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-
         mood = cleaned_data.get('mood')
         energy = cleaned_data.get('energy_level')
+        date = cleaned_data.get('date')
 
         if mood == MoodEntry.MoodChoices.SLEEPY and energy == EnergyChoices.HIGH:
             raise forms.ValidationError('If you`re sleepy, you cannot have high energy.')
+
+        if self.user and hasattr(self.user, 'cat') and date:
+            existing_entry = MoodEntry.objects.filter(
+                cat=self.user.cat,
+                date=date,
+            )
+
+            if self.instance.pk:
+                existing_entry = existing_entry.exclude(pk=self.instance.pk)
+
+            if existing_entry.exists():
+                self.add_error('date', 'You already have a diary entry for this date.')
 
         return cleaned_data
 
