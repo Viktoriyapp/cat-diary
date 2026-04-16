@@ -1,3 +1,5 @@
+from http.client import responses
+
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -6,7 +8,7 @@ from cats.models import Cat
 from moods.forms import MoodEntryForm
 from moods.mixins import MoodEntryAccessMixin, UserHasCatProfileMixin
 from moods.models import MoodEntry, DayTag
-
+from moods.tasks import calculate_cat_statistics
 
 
 class MoodEntryListView(LoginRequiredMixin, UserHasCatProfileMixin, ListView):
@@ -102,7 +104,10 @@ class MoodEntryCreateView(LoginRequiredMixin, UserHasCatProfileMixin, CreateView
 
     def form_valid(self, form):
         form.instance.cat = self.request.user.cat
-        return super().form_valid(form)
+        response = super().form_valid(form)
+
+        calculate_cat_statistics.delay(self.request.user.cat.id)
+        return response
 
 
 class MoodEntryUpdateView(LoginRequiredMixin,MoodEntryAccessMixin, UpdateView):
