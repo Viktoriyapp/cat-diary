@@ -44,6 +44,7 @@ class MoodEntry(models.Model): # The mood for the day
 
 class DayTag(models.Model): # How was the day
     name = models.CharField(max_length=30, unique=True)
+    icon = models.CharField(max_length=15)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -51,4 +52,4 @@ class DayTag(models.Model): # How was the day
         ordering = ['name']
 
     def __str__(self):
-        return self.name
+        return f'{self.icon} {self.name}'
